@@ -6,7 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "eslint": "next lint --dir src",
+    "eslint:fix": "next lint --dir src --fix",
+    "prettier": "prettier --check './src/**/*.{ts,tsx}'",
+    "prettier:fix": "prettier --check './src/**/*.{ts,tsx}' --write",
+    "lint": "yarn eslint && yarn prettier",
+    "fix": "yarn eslint:fix && yarn prettier:fix"
   },
   "dependencies": {
     "next": "12.2.5",
@@ -17,8 +22,13 @@
     "@types/node": "18.7.9",
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.33.1",
+    "@typescript-eslint/parser": "^5.33.1",
     "eslint": "8.22.0",
     "eslint-config-next": "12.2.5",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "prettier": "^2.7.1",
     "typescript": "4.7.4"
   }
 }
