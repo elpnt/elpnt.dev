@@ -1,0 +1,19 @@
+schema: ${HYGRAPH_API}
+documents: graphql/**/*.graphql
+generates:
+  src/generated/graphql.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-graphql-request
+    config:
+      scalars:
+        Date: string
+        DateTime: Date
+    hooks:
+      afterOneFileWrite:
+        - eslint --fix
+        - prettier --write
+  ./graphql.schema.json:
+    plugins:
+      - introspection
