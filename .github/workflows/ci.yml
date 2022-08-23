@@ -16,6 +16,12 @@ jobs:
           cache: yarn
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+      - name: Create env file
+        run: |
+          touch .env
+          echo HYGRAPH_API=${{ secrets.HYGRAPH_API }} >> .env
+      - name: Generate TypeScript codes from GraphQL
+        run: yarn generate
       - name: Lint
         run: yarn lint
       - name: Production build

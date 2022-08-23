@@ -1,0 +1,24 @@
+query getPosts {
+  posts {
+    slug
+    title
+    date
+    excerpt
+    tags {
+      name
+      slug
+    }
+  }
+}
+
+query getPostBySlug($slug: String) {
+  post(where: { slug: $slug }) {
+    title
+    date
+    tags {
+      name
+      slug
+    }
+    content
+  }
+}
