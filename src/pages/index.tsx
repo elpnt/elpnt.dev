@@ -1,39 +1,28 @@
-import Link from "next/link";
+import markdownToTxt from "markdown-to-txt";
 
-import type { GetPostsQuery } from "@/generated/graphql";
+import { Posts } from "@/components/Posts";
 import { hygraph } from "@/lib/hygraph";
+import type { PostSummary } from "@/types";
 
 import type { GetStaticProps, NextPage } from "next";
 
 type Props = {
-  posts: GetPostsQuery["posts"];
+  posts: PostSummary[];
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const { posts } = await hygraph.getPosts();
-  return { props: { posts } };
+  const data = posts.map((post) => {
+    const { content, ...rest } = post;
+    const excerpt = markdownToTxt(content).slice(0, 150);
+    return { ...rest, excerpt };
+  });
+
+  return { props: { posts: data } };
 };
 
 const Home: NextPage<Props> = ({ posts }) => {
-  return (
-    <div className="mx-auto max-w-3xl py-12">
-      <h1 className="text-2xl font-bold">Heading</h1>
-      {posts.map((post) => (
-        <div key={post.slug}>
-          <Link href={`/posts/${post.slug}`}>
-            <a>
-              {post.title} {post.date} {post.excerpt}
-            </a>
-          </Link>
-          <ul>
-            {post.tags.map((tag) => (
-              <li key={tag.slug}>{tag.name}</li>
-            ))}
-          </ul>
-        </div>
-      ))}
-    </div>
-  );
+  return <Posts posts={posts} />;
 };
 
 export default Home;

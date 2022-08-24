@@ -1,13 +1,16 @@
 query getPosts {
-  posts {
+  posts(orderBy: date_DESC) {
     slug
     title
     date
-    excerpt
+    coverImage {
+      url
+    }
     tags {
       name
       slug
     }
+    content
   }
 }
 
