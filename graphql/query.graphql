@@ -7,8 +7,8 @@ query getPosts {
       url
     }
     tags {
-      name
       slug
+      name
     }
     content
   }
@@ -22,6 +22,37 @@ query getPostBySlug($slug: String) {
       name
       slug
     }
+    coverImage {
+      url
+      width
+      height
+    }
     content
+  }
+}
+
+query getTags {
+  tags {
+    slug
+    name
+  }
+}
+
+query getPostsByTagSlug($slug: String) {
+  tag(where: { slug: $slug }) {
+    name
+    posts(orderBy: date_DESC) {
+      slug
+      title
+      date
+      coverImage {
+        url
+      }
+      tags {
+        slug
+        name
+      }
+      content
+    }
   }
 }

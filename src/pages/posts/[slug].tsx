@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
+import Image from "next/image";
 import rehypeCodeTitles from "rehype-code-titles";
 import rehypePrism from "rehype-prism-plus";
 import remarkGfm from "remark-gfm";
@@ -24,8 +25,8 @@ type Props = {
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const { posts } = await hygraph.getPosts();
-  const paths = posts.map((post) => ({
-    params: { slug: post.slug },
+  const paths = posts.map(({ slug }) => ({
+    params: { slug },
   }));
 
   return {
@@ -55,12 +56,20 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 };
 
 const Post: NextPage<Props, Params> = ({ meta, mdxSource }) => {
-  const { title, date, tags } = meta;
+  const { title, date, tags, coverImage } = meta;
 
   return (
-    <article
-      className={clsx("prose max-w-none", "prose-h2:block prose-h2:border-b")}
-    >
+    <article>
+      {coverImage && (
+        <div className="relative mb-6 h-80 w-full overflow-hidden rounded">
+          <Image
+            src={coverImage.url}
+            alt="Cover image"
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
+      )}
       <span className="block text-sm text-gray-700">
         <DateFormatter date={date} />
       </span>
@@ -69,10 +78,17 @@ const Post: NextPage<Props, Params> = ({ meta, mdxSource }) => {
       </h1>
       <ul className="flex flex-row space-x-2 pl-0">
         {tags.map((tag) => (
-          <TagBadge name={tag.name} key={tag.slug} />
+          <TagBadge key={tag.slug} {...tag} />
         ))}
       </ul>
-      <MDXRemote {...mdxSource} />
+      <div
+        className={clsx(
+          "prose mt-12 max-w-none",
+          "prose-h2:block prose-h2:border-b"
+        )}
+      >
+        <MDXRemote {...mdxSource} />
+      </div>
     </article>
   );
 };
