@@ -13,7 +13,7 @@ const navigation = [
 
 export const Header = () => {
   return (
-    <div className="min-h-full">
+    <div className="sticky top-0 min-h-full">
       <Disclosure as="nav" className="bg-white">
         {({ open }) => (
           <>
