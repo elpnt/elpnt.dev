@@ -1,3 +1,13 @@
+@import "./prism-material-dark.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.rehype-code-title {
+  @apply rounded-t-lg border-b bg-slate-800 px-5 py-3 font-mono text-sm font-bold text-gray-200;
+}
+
+.rehype-code-title + pre {
+  @apply mt-0 rounded-t-none;
+}
