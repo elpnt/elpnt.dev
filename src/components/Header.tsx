@@ -17,7 +17,7 @@ export const Header = () => {
       <Disclosure as="nav" className="bg-white">
         {({ open }) => (
           <>
-            <div className="mx-auto max-w-4xl px-4 sm:px-6">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <div className="flex h-16 items-center justify-between">
                 <div className="flex items-center">
                   <div className="h-10 w-10 flex-shrink-0">
