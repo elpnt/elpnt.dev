@@ -70,10 +70,10 @@ const Post: NextPage<Props, Params> = ({ meta, mdxSource }) => {
           />
         </div>
       )}
-      <span className="block text-sm text-gray-700">
+      <span className="block text-sm text-gray-700 dark:text-gray-400">
         <DateFormatter date={date} />
       </span>
-      <h1 className="mt-2 mb-4 block text-2xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl sm:tracking-tight">
+      <h1 className="mt-2 mb-4 block text-2xl font-bold leading-8 tracking-tight text-gray-900 dark:text-white sm:text-4xl sm:tracking-tight">
         {title}
       </h1>
       <ul className="flex flex-row space-x-2 pl-0">
@@ -83,8 +83,8 @@ const Post: NextPage<Props, Params> = ({ meta, mdxSource }) => {
       </ul>
       <div
         className={clsx(
-          "prose mt-12 max-w-none",
-          "prose-h2:block prose-h2:border-b"
+          "prose mt-12 max-w-none dark:prose-invert",
+          "prose-h2:block prose-h2:border-b dark:prose-h2:border-gray-600"
         )}
       >
         <MDXRemote {...mdxSource} />
