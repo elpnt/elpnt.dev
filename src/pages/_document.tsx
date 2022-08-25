@@ -20,7 +20,7 @@ export default function Document() {
           {themeScript}
         </Script>
       </Head>
-      <body className="h-full transition-colors dark:bg-gray-900">
+      <body className="h-full dark:bg-gray-900">
         <Main />
         <NextScript />
       </body>

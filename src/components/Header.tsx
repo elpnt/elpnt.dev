@@ -4,7 +4,7 @@ import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 
-import Icon from "public/icon.png";
+import Icon from "public/icon_128x128.png";
 
 import { ThemeSelector } from "./ThemeSelector";
 
@@ -23,17 +23,12 @@ export const Header = () => {
             <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
               <div className="flex h-16 items-center justify-between">
                 <div className="flex items-center">
-                  <div className="hidden h-10 w-10 flex-shrink-0 sm:block">
-                    <Link href="/">
-                      <a>
-                        <Image
-                          src={Icon}
-                          alt="Profile pic"
-                          className="rounded-full"
-                        />
-                      </a>
-                    </Link>
-                  </div>
+                  <Link href="/">
+                    <a className="relative hidden h-12 w-12 flex-shrink-0 overflow-hidden rounded-full sm:block">
+                      <Image src={Icon} alt="Profile pic" />
+                      <div className="absolute top-0 left-0 h-full w-full rounded-full shadow-inner shadow-gray-500/50" />
+                    </a>
+                  </Link>
                   <div className="hidden sm:block">
                     <div className="ml-10 flex items-center space-x-4">
                       {navigation.map((item) => (

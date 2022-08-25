@@ -1,13 +1,17 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { SunIcon, MoonIcon } from "@heroicons/react/outline";
 
-const LightIcon = () => {
-  return <SunIcon className="h-6 w-6 text-gray-800 dark:text-gray-200" />;
+const LightIcon = (props: React.ComponentProps<"svg">) => {
+  return (
+    <SunIcon className="h-6 w-6 text-gray-800 dark:text-gray-200" {...props} />
+  );
 };
 
-const DarkIcon = () => {
-  return <MoonIcon className="h-6 w-6 text-gray-800 dark:text-gray-200" />;
+const DarkIcon = (props: React.ComponentProps<"svg">) => {
+  return (
+    <MoonIcon className="h-6 w-6 text-gray-800 dark:text-gray-200" {...props} />
+  );
 };
 
 type Theme = "light" | "dark";
