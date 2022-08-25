@@ -83,7 +83,7 @@ const Post: NextPage<Props, Params> = ({ meta, mdxSource }) => {
       </ul>
       <div
         className={clsx(
-          "prose mt-12 max-w-none dark:prose-invert",
+          "prose prose-indigo mt-12 max-w-none dark:prose-invert",
           "prose-h2:block prose-h2:border-b dark:prose-h2:border-gray-600"
         )}
       >
