@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import Link from "next/link";
 
 type TagBadgeProps = {
@@ -8,7 +9,13 @@ type TagBadgeProps = {
 export const TagBadge = ({ name, slug }: TagBadgeProps) => {
   return (
     <Link href={`/tags/${slug}`}>
-      <a className="inline-flex items-center rounded bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-800 hover:bg-gray-200 hover:text-gray-900 sm:text-sm">
+      <a
+        className={clsx(
+          "inline-flex items-center rounded px-2 py-0.5 text-xs font-medium sm:text-sm",
+          "bg-gray-100 text-gray-800 hover:bg-gray-200 hover:text-gray-900",
+          "dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+        )}
+      >
         {name}
       </a>
     </Link>
