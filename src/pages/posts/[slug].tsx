@@ -7,6 +7,7 @@ import rehypePrism from "rehype-prism-plus";
 import remarkGfm from "remark-gfm";
 
 import { DateFormatter } from "@/components/DateFormatter";
+import { Seo } from "@/components/Seo";
 import { TagBadge } from "@/components/TagBadge";
 import type { GetPostBySlugQuery } from "@/generated/graphql";
 import { hygraph } from "@/lib/hygraph";
@@ -59,37 +60,42 @@ const Post: NextPage<Props, Params> = ({ meta, mdxSource }) => {
   const { title, date, tags, coverImage } = meta;
 
   return (
-    <article>
-      {coverImage && (
-        <div className="relative mb-6 h-80 w-full overflow-hidden rounded">
-          <Image
-            src={coverImage.url}
-            alt="Cover image"
-            layout="fill"
-            objectFit="cover"
-          />
+    <>
+      <Seo title={title} imageUrl={coverImage?.url} />
+      <article>
+        <header>
+          {coverImage && (
+            <div className="relative mb-6 h-80 w-full overflow-hidden rounded">
+              <Image
+                src={coverImage.url}
+                alt="Cover image"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+          )}
+          <span className="block text-sm text-gray-700 dark:text-gray-400">
+            <DateFormatter date={date} />
+          </span>
+          <h1 className="mt-2 mb-4 block text-2xl font-bold leading-8 tracking-tight text-gray-900 dark:text-white sm:text-4xl sm:tracking-tight">
+            {title}
+          </h1>
+          <ul className="flex flex-row space-x-2 pl-0">
+            {tags.map((tag) => (
+              <TagBadge key={tag.slug} {...tag} />
+            ))}
+          </ul>
+        </header>
+        <div
+          className={clsx(
+            "prose prose-indigo mt-12 max-w-none dark:prose-invert",
+            "prose-h2:block prose-h2:border-b dark:prose-h2:border-gray-600"
+          )}
+        >
+          <MDXRemote {...mdxSource} />
         </div>
-      )}
-      <span className="block text-sm text-gray-700 dark:text-gray-400">
-        <DateFormatter date={date} />
-      </span>
-      <h1 className="mt-2 mb-4 block text-2xl font-bold leading-8 tracking-tight text-gray-900 dark:text-white sm:text-4xl sm:tracking-tight">
-        {title}
-      </h1>
-      <ul className="flex flex-row space-x-2 pl-0">
-        {tags.map((tag) => (
-          <TagBadge key={tag.slug} {...tag} />
-        ))}
-      </ul>
-      <div
-        className={clsx(
-          "prose prose-indigo mt-12 max-w-none dark:prose-invert",
-          "prose-h2:block prose-h2:border-b dark:prose-h2:border-gray-600"
-        )}
-      >
-        <MDXRemote {...mdxSource} />
-      </div>
-    </article>
+      </article>
+    </>
   );
 };
 

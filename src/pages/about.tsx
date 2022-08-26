@@ -2,11 +2,14 @@ import Image from "next/image";
 
 import Icon from "public/icon.png";
 
+import { Seo } from "@/components/Seo";
+
 import type { NextPage } from "next";
 
 const About: NextPage = () => {
   return (
-    <div>
+    <>
+      <Seo title="About" />
       <div className="flex items-center space-x-4 lg:space-x-6">
         <div className="relative h-16 w-16 overflow-hidden rounded-full lg:h-32 lg:w-32">
           <Image src={Icon} alt="Profile pic" />
@@ -26,7 +29,7 @@ const About: NextPage = () => {
       <div className="mt-2 border-t-2 border-gray-200 dark:border-gray-700">
         WIP
       </div>
-    </div>
+    </>
   );
 };
 
