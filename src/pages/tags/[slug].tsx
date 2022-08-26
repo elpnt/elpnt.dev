@@ -1,6 +1,7 @@
 import markdownToTxt from "markdown-to-txt";
 
 import { Posts } from "@/components/Posts";
+import { Seo } from "@/components/Seo";
 import { hygraph } from "@/lib/hygraph";
 import type { PostSummary } from "@/types";
 
@@ -47,7 +48,12 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 };
 
 const Tag: NextPage<Props, Params> = ({ tagName, posts }) => {
-  return <Posts title={tagName} posts={posts} />;
+  return (
+    <>
+      <Seo title={tagName} />
+      <Posts title={tagName} posts={posts} />
+    </>
+  );
 };
 
 export default Tag;

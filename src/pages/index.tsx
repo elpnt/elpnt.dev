@@ -1,6 +1,7 @@
 import markdownToTxt from "markdown-to-txt";
 
 import { Posts } from "@/components/Posts";
+import { Seo } from "@/components/Seo";
 import { hygraph } from "@/lib/hygraph";
 import type { PostSummary } from "@/types";
 
@@ -22,7 +23,12 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 };
 
 const Home: NextPage<Props> = ({ posts }) => {
-  return <Posts posts={posts} />;
+  return (
+    <>
+      <Seo title="TOP" />
+      <Posts posts={posts} />
+    </>
+  );
 };
 
 export default Home;
