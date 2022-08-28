@@ -5,9 +5,18 @@
 @tailwind utilities;
 
 .rehype-code-title {
-  @apply rounded-t-lg border-b bg-slate-800 px-5 py-3 font-mono text-sm font-bold text-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200;
+  @apply rounded-t-lg border-b border-gray-700 bg-gray-800 px-5 py-3 font-mono text-sm font-bold text-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200;
 }
 
 .rehype-code-title + pre {
   @apply mt-0 rounded-t-none;
+}
+
+pre::-webkit-scrollbar {
+  display: none;
+}
+
+pre {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }

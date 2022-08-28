@@ -6,7 +6,7 @@ pre[class*="language-"] {
   word-break: normal;
   word-wrap: normal;
   color: #eee;
-
+  background: #2f2f2f;
   -webkit-hyphens: none;
   -moz-hyphens: none;
   -ms-hyphens: none;

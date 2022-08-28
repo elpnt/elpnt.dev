@@ -64,16 +64,6 @@ const Post: NextPage<Props, Params> = ({ meta, mdxSource }) => {
       <Seo title={title} imageUrl={coverImage?.url} />
       <article>
         <header>
-          {coverImage && (
-            <div className="relative mb-6 h-80 w-full overflow-hidden rounded">
-              <Image
-                src={coverImage.url}
-                alt="Cover image"
-                layout="fill"
-                objectFit="cover"
-              />
-            </div>
-          )}
           <span className="block text-sm text-gray-700 dark:text-gray-400">
             <DateFormatter date={date} />
           </span>
@@ -85,6 +75,16 @@ const Post: NextPage<Props, Params> = ({ meta, mdxSource }) => {
               <TagBadge key={tag.slug} {...tag} />
             ))}
           </ul>
+          {coverImage && (
+            <div className="relative mt-6 h-80 w-full overflow-hidden rounded">
+              <Image
+                src={coverImage.url}
+                alt="Cover image"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+          )}
         </header>
         <div
           className={clsx(
