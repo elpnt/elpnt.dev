@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "concurrently \"next dev\" \"yarn generate --watch\"",
     "build": "next build",
+    "prebuild": "yarn generate",
     "start": "next start",
     "eslint": "next lint --dir src",
     "eslint:fix": "next lint --dir src --fix",
