@@ -76,7 +76,7 @@ const Post: NextPage<Props, Params> = ({ meta, mdxSource }) => {
             ))}
           </ul>
           {coverImage && (
-            <div className="relative mt-6 h-80 w-full overflow-hidden rounded">
+            <div className="aspect-h-9 aspect-w-16 relative mt-6 w-full overflow-hidden rounded">
               <Image
                 src={coverImage.url}
                 alt="Cover image"
