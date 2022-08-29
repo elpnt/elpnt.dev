@@ -39,7 +39,7 @@ export const ThemeSelector = () => {
 
   return (
     <button
-      className="flex h-9 w-9 items-center justify-center rounded-lg bg-gray-100 ring-gray-300 transition-all hover:ring-2 dark:bg-gray-700"
+      className="flex h-9 w-9 items-center justify-center rounded-lg ring-gray-300 transition-all hover:ring-2"
       onClick={handleClick}
     >
       {selectedTheme === "light" ? <DarkIcon /> : <LightIcon />}
