@@ -39,6 +39,7 @@ export const ThemeSelector = () => {
 
   return (
     <button
+      aria-label="Toggle dark mode"
       className="flex h-9 w-9 items-center justify-center rounded-lg ring-gray-300 transition-all hover:ring-2"
       onClick={handleClick}
     >
