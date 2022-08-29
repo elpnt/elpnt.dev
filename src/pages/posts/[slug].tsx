@@ -1,3 +1,4 @@
+import { ChevronLeftIcon } from "@heroicons/react/outline";
 import clsx from "clsx";
 import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
@@ -7,6 +8,7 @@ import rehypePrism from "rehype-prism-plus";
 import remarkGfm from "remark-gfm";
 
 import { DateFormatter } from "@/components/DateFormatter";
+import { Link } from "@/components/Link";
 import { Seo } from "@/components/Seo";
 import { TagBadge } from "@/components/TagBadge";
 import type { GetPostBySlugQuery } from "@/generated/graphql";
@@ -62,15 +64,16 @@ const Post: NextPage<Props, Params> = ({ meta, mdxSource }) => {
   return (
     <>
       <Seo title={title} imageUrl={coverImage?.url} />
-      <article>
+      <BackToTop />
+      <article className="mt-6">
         <header>
           <span className="block text-sm text-gray-700 dark:text-gray-400">
             <DateFormatter date={date} />
           </span>
-          <h1 className="mt-2 mb-4 block text-2xl font-bold leading-8 tracking-tight text-gray-900 dark:text-white sm:text-4xl sm:tracking-tight">
+          <h1 className="mt-1 block text-3xl font-bold leading-8 tracking-tight text-gray-900 dark:text-white sm:text-4xl sm:tracking-tight">
             {title}
           </h1>
-          <ul className="flex flex-row space-x-2 pl-0">
+          <ul className="mt-4 flex flex-row space-x-2 pl-0">
             {tags.map((tag) => (
               <TagBadge key={tag.slug} {...tag} />
             ))}
@@ -96,6 +99,18 @@ const Post: NextPage<Props, Params> = ({ meta, mdxSource }) => {
         </div>
       </article>
     </>
+  );
+};
+
+const BackToTop = () => {
+  return (
+    <Link
+      href="/"
+      className="group inline-flex items-center text-sm font-medium text-gray-600 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-300"
+    >
+      <ChevronLeftIcon className="-ml-1 h-4 w-4 text-gray-500 group-hover:text-gray-400" />
+      Back to Top
+    </Link>
   );
 };
 
