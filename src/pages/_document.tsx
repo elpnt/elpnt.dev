@@ -15,10 +15,15 @@ export default function Document() {
   return (
     <Html lang="ja" className="h-full">
       <Head>
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
         <Script id="theme-switch" strategy="beforeInteractive">
           {themeScript}
         </Script>
+        <link
+          rel="preload"
+          href="/inter.css"
+          as="font"
+          crossOrigin="anonymous"
+        />
       </Head>
       <body className="h-full dark:bg-gray-900">
         <Main />
