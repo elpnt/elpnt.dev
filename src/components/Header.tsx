@@ -15,7 +15,7 @@ const navigation = [
 
 export const Header = () => {
   return (
-    <div className="sticky top-0 z-10 min-h-full bg-white dark:bg-gray-900 sm:bg-white/90 sm:backdrop-blur dark:sm:bg-gray-900/70">
+    <div className="sticky top-0 z-10 min-h-full bg-white/90 backdrop-blur dark:bg-gray-900/70">
       <Disclosure as="nav">
         {({ open }) => (
           <>
@@ -69,7 +69,7 @@ export const Header = () => {
             </div>
 
             {/* Mobile navigation */}
-            <Disclosure.Panel className="sm:hidden">
+            <Disclosure.Panel className="bg-white dark:bg-gray-900 sm:hidden">
               <div className="space-y-1 border-y border-gray-200 px-2 py-3 dark:border-gray-700">
                 {navigation.map((item) => (
                   <Link key={item.name} href={item.href}>
