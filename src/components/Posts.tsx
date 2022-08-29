@@ -58,26 +58,25 @@ const PostCard = ({ post }: PostCardProps) => {
         <p className="text-sm text-gray-500 dark:text-gray-400">
           <DateFormatter date={date} />
         </p>
-        <Link href={href}>
-          <a
-            className="mt-2 block"
-            onMouseOver={handleOnMouseOver}
-            onMouseLeave={handleOnMouseLeave}
+        <Link
+          href={href}
+          className="mt-2 block"
+          onMouseOver={handleOnMouseOver}
+          onMouseLeave={handleOnMouseLeave}
+        >
+          <p
+            className={clsx(
+              hover
+                ? "text-indigo-600 dark:text-indigo-500"
+                : "text-gray-900 dark:text-white",
+              "text-xl font-semibold"
+            )}
           >
-            <p
-              className={clsx(
-                hover
-                  ? "text-indigo-600 dark:text-indigo-500"
-                  : "text-gray-900 dark:text-white",
-                "text-xl font-semibold"
-              )}
-            >
-              {title}
-            </p>
-            <p className="mt-3 text-sm text-gray-500 line-clamp-2 dark:text-gray-400">
-              {excerpt}
-            </p>
-          </a>
+            {title}
+          </p>
+          <p className="mt-3 text-sm text-gray-500 line-clamp-2 dark:text-gray-400">
+            {excerpt}
+          </p>
         </Link>
         <div className="mt-3 flex flex-row space-x-2">
           {tags.map((tag) => (
