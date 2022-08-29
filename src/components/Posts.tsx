@@ -3,11 +3,11 @@ import { useState } from "react";
 import { BookOpenIcon } from "@heroicons/react/outline";
 import clsx from "clsx";
 import Image from "next/image";
-import Link from "next/link";
 
 import type { PostSummary } from "@/types";
 
 import { DateFormatter } from "./DateFormatter";
+import { Link } from "./Link";
 import { TagBadge } from "./TagBadge";
 
 type PostCardProps = {
@@ -24,37 +24,35 @@ const PostCard = ({ post }: PostCardProps) => {
 
   return (
     <div className="sm:flex">
-      <Link href={href}>
-        <a className="flex-shrink-0 sm:mr-4">
-          {coverImage ? (
-            <div
-              onMouseOver={handleOnMouseOver}
-              onMouseLeave={handleOnMouseLeave}
-              className="relative h-48 w-full overflow-hidden rounded border border-gray-300 dark:border-gray-700 sm:h-36 sm:w-48"
-            >
-              <Image
-                src={coverImage.url}
-                alt="cover image"
-                layout="fill"
-                objectFit="cover"
-                className={clsx(hover && "scale-110", "transition")}
-              />
-            </div>
-          ) : (
-            <div
-              className="grid h-48 w-full place-items-center overflow-hidden rounded border border-gray-300 bg-gray-900 dark:border-gray-700 sm:h-36 sm:w-48"
-              onMouseOver={handleOnMouseOver}
-              onMouseLeave={handleOnMouseLeave}
-            >
-              <BookOpenIcon
-                className={clsx(
-                  hover && "scale-110",
-                  "h-12 w-12 stroke-1 text-gray-300 transition"
-                )}
-              />
-            </div>
-          )}
-        </a>
+      <Link href={href} className="flex-shrink-0 sm:mr-4">
+        {coverImage ? (
+          <div
+            onMouseOver={handleOnMouseOver}
+            onMouseLeave={handleOnMouseLeave}
+            className="relative h-48 w-full overflow-hidden rounded border border-gray-300 dark:border-gray-700 sm:h-36 sm:w-48"
+          >
+            <Image
+              src={coverImage.url}
+              alt="cover image"
+              layout="fill"
+              objectFit="cover"
+              className={clsx(hover && "scale-110", "transition")}
+            />
+          </div>
+        ) : (
+          <div
+            className="grid h-48 w-full place-items-center overflow-hidden rounded border border-gray-300 bg-gray-900 dark:border-gray-700 sm:h-36 sm:w-48"
+            onMouseOver={handleOnMouseOver}
+            onMouseLeave={handleOnMouseLeave}
+          >
+            <BookOpenIcon
+              className={clsx(
+                hover && "scale-110",
+                "h-12 w-12 stroke-1 text-gray-300 transition"
+              )}
+            />
+          </div>
+        )}
       </Link>
       <div className="mt-4 w-full sm:mt-0">
         <p className="text-sm text-gray-500 dark:text-gray-400">
