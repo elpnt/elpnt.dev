@@ -4,7 +4,7 @@ import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 
-import Icon from "public/icon_128x128.png";
+import Icon from "public/icon.png";
 
 import { ThemeSelector } from "./ThemeSelector";
 
