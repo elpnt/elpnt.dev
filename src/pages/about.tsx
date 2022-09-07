@@ -1,7 +1,7 @@
 import { DownloadIcon, ExternalLinkIcon } from "@heroicons/react/outline";
 import Image from "next/image";
 
-import Icon from "public/icon.png";
+import Icon from "public/icon.webp";
 
 import { Seo } from "@/components/Seo";
 
